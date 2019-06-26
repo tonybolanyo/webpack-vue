@@ -26,5 +26,10 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      vue$: "vue/dist/vue.esm.js"
+    }
+  }
 };
