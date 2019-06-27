@@ -1,7 +1,16 @@
 'use strict'
+
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   mode: 'development',
 
@@ -43,6 +52,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([{
+      from: resolve('static/img'),
+      to: resolve('dist/static/img'),
+      toType: 'dir'
+    }]),
     new webpack.LoaderOptionsPlugin({ options: {} }),
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
