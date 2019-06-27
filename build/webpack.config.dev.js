@@ -1,69 +1,36 @@
 'use strict'
 
 const webpack = require('webpack')
-const { VueLoaderPlugin } = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.config.base')
 
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
+const HOST = 'localhost'
+const PORT = 38080
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
-
-module.exports = {
+module.exports = merge(baseConfig, {
   mode: 'development',
 
   devServer: {
+    clientLogLevel: 'warning',
     hot: true,
-    watchOptions: {
-      poll: true
-    }
+    contentBase: 'dist',
+    compress: true,
+    host: HOST,
+    port: PORT,
+    open: true,
+    overlay: { warnings: false, errors: true },
+    publicPath: '/',
+    quiet: true
   },
+
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        use: 'vue-loader'
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.(js|vue)$/,
-        exclude: /node_modules/,
-        // Cambiado para soportar la versión 6.0 de eslint hasta que la actualicen
-        // https://github.com/webpack-contrib/eslint-loader/pull/275
-        use: [
-          {
-            loader: 'eslint-loader',
-            options: {
-              formatter: require('eslint/lib/cli-engine/formatters/stylish')
-            }
-          }
-        ],
-        enforce: 'pre'
-      },
       {
         test: /\.css$/,
         use: ['vue-style-loader', 'css-loader']
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([{
-      from: resolve('static/img'),
-      to: resolve('dist/static/img'),
-      toType: 'dir'
-    }]),
-    new webpack.LoaderOptionsPlugin({ options: {} }),
-    new webpack.HotModuleReplacementPlugin(),
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    })
-  ]
-}
+
+  plugins: [new webpack.HotModuleReplacementPlugin()]
+})
