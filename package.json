@@ -4,7 +4,10 @@
   "description": "Setting up vue and webpack",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config build/webpack.config.dev.js"
+    "build": "webpack --config build/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config build/webpack.config.dev.js",
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --ext .js,.vue src --fix"
   },
   "repository": {
     "type": "git",
@@ -20,18 +23,25 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.7.0",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.7.2"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "vue": "^2.6.10",
