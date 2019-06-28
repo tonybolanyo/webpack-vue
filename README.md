@@ -1,6 +1,29 @@
-# webpack-vue
-Setting up vue and webpack
+# vuetify-first
 
-- First try guide: https://www.valentinog.com/blog/webpack/
+## Project setup
+```
+npm install
+```
 
-Another guide: https://itnext.io/vuejs-and-webpack-4-from-scratch-part-1-94c9c28a534a
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
