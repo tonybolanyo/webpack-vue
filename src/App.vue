@@ -1,15 +1,12 @@
 <template>
-  <div class="full-width center-content">
-    <hello-component name="World" />
+  <div class="container center-content">
+    <RouterView />
   </div>
 </template>
 
-<script>
-import HelloComponent from './components/HelloComponent.vue'
-
-export default {
-  components: {
-    HelloComponent
-  }
+<style scoped>
+.container {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  max-width: 1200px;
 }
-</script>
+</style>
