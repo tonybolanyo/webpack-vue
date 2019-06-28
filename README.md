@@ -1,4 +1,4 @@
-# vuetify-first
+# webpack-vue
 
 ## Project setup
 ```
