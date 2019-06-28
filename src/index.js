@@ -1,9 +1,11 @@
-import style from "./main.css";
-import Vue from "vue";
+import Vue from 'vue'
+import router from './router'
+import App from './App.vue'
 
-const app = new Vue({
-  el: "#app",
-  data: {
-    message: "Hello Vue!"
-  }
-});
+import '../assets/app.css'
+
+// eslint-disable-next-line no-new
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')
